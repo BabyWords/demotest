@@ -7,7 +7,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-
+<script type="javascript" src="<%=path%>/static/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 

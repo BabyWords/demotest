@@ -70,4 +70,9 @@
       password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="userexsits" parameterType="String" resultType="com.spring.entity.User">
+    select
+    <include refid="Base_Column_List"/>
+    from user WHERE name=#{name}
+  </select>
 </mapper>
