@@ -22,7 +22,6 @@
     <div class="col-md-4 col-md-offset-4">
         <form action="<%=basePath%>user/login" method="post" role="form">
             <div class="form-group">
-
                 <label for="username" class="uname" data-icon="u"> 用户名 ：</label>
                 <input id="username" name="username" required="required" type="text"
                        placeholder="请输入用户名" class="form-control"/><div id="result"></div>
@@ -48,6 +47,7 @@
                 success:function(result){
                     if(result=="1"){
                         $("#result").text("用户已存在")
+                        $("#result").css("color","red")
                     }else{
                         $("#result").text("")
                     }

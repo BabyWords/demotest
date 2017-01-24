@@ -9,12 +9,12 @@ import org.springframework.stereotype.Controller;
 import com.spring.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -30,7 +30,7 @@ public class UserController {
         String username = request.getParameter("username");
         request.getSession().setAttribute("user", username);
         log.info("uer/login,username:" + request.getSession().getAttribute("user"));
-        return "redirect:/user/hello";
+        return "success";
     }
 
     @RequestMapping("/hello")
@@ -39,13 +39,18 @@ public class UserController {
     }
 
     @RequestMapping("/userexists")
-    public void userexsit(@RequestParam String name, HttpServletResponse response) throws Exception{
-        log.info("incontroller");
+    public void userexsit(@RequestParam(value = "name") String name, HttpServletResponse response) throws Exception {
         String result = userService.isexsits(name);
-        log.info("nextstep");
-            PrintWriter out = response.getWriter();
-            out.write(result);
-            out.close();
-        }
+        PrintWriter out = response.getWriter();
+        out.write(result);
+        out.close();
+    }
+
+    @RequestMapping("/showuser")
+    public String showuser(ModelAndView modelAndView) {
+        List ulist=null;
+        return "showuser";
+    }
+
 
 }
